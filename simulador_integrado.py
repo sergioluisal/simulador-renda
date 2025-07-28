@@ -17,6 +17,7 @@ from plotly.subplots import make_subplots
 class SimuladorRendaVariavel:
     def __init__(self):
         pass
+        
     def buscar_dados_ativo(self, symbol, region='US', interval='1d', range_period='1y'):
         """
         Busca dados históricos de um ativo
@@ -26,17 +27,14 @@ class SimuladorRendaVariavel:
             df = ticker.history(period=range_period, interval=interval)
             
             if df.empty:
-                return None, None, None
+                return None, None
 
             # Renomear colunas para consistência
             df.columns = [col.lower() for col in df.columns]
             df.index.name = 'date'
 
-            # Buscar dados de dividendos
-            dividendos = self.buscar_dividendos(ticker, range_period)
-
             # Obter metadados
-            info = ticker.info
+            info = ticker.fast_info
             meta = {
                 'symbol': symbol,
                 'longName': info.get('longName', symbol),
@@ -48,16 +46,13 @@ class SimuladorRendaVariavel:
                 'regularMarketVolume': info.get('regularMarketVolume', 'N/A'),
                 'regularMarketDayHigh': info.get('regularMarketDayHigh', 'N/A'),
                 'regularMarketDayLow': info.get('regularMarketDayLow', 'N/A'),
-                'dividendYield': info.get('dividendYield', 0),
-                'trailingAnnualDividendYield': info.get('trailingAnnualDividendYield', 0),
-                'trailingAnnualDividendRate': info.get('trailingAnnualDividendRate', 0),
             }
             
-            return df, meta, dividendos
+            return df, meta
                 
         except Exception as e:
             print(f"Erro ao buscar dados para {symbol}: {str(e)}")
-            return None, None, None
+            return None, None
     
     def buscar_dividendos(self, symbol, start_date=None, end_date=None):
         """
@@ -524,4 +519,3 @@ def exemplo_uso():
 
 if __name__ == "__main__":
     exemplo_uso()
-
