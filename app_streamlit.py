@@ -9,7 +9,7 @@ import numpy as np
 from datetime import datetime, timedelta
 import plotly.graph_objects as go
 import plotly.express as px
-from src.simulador_integrado import SimuladorRendaVariavel, AnalisadorHistorico
+from simulador_integrado import SimuladorRendaVariavel, AnalisadorHistorico
 from lista_ativos_populares import obter_todos_ativos, buscar_ativo_por_simbolo
 
 # Configuração da página
