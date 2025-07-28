@@ -17,11 +17,7 @@ from plotly.subplots import make_subplots
 class SimuladorRendaVariavel:
     def __init__(self):
         pass
-        
-    def __init__(self):
-        pass
-        
-        def buscar_dados_ativo(self, symbol, region='US', interval='1d', range_period='1y'):
+    def buscar_dados_ativo(self, symbol, region='US', interval='1d', range_period='1y'):
         """
         Busca dados históricos de um ativo
         """
