@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+"""
+Simulador de Investimentos em Renda Variável
 Suporta ações, BDRs e ETFs com dados do Yahoo Finance
 Inclui funcionalidades de dividendos e aportes mensais
 """
@@ -31,7 +34,7 @@ class SimuladorRendaVariavel:
             df.index.name = 'date'
 
             # Obter metadados
-            info = ticker.fast_info
+            info = ticker.info
             meta = {
                 'symbol': symbol,
                 'longName': info.get('longName', symbol),
