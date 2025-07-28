@@ -445,4 +445,3 @@ def mostrar_informacoes_iniciais():
 
 if __name__ == "__main__":
     main()
-
