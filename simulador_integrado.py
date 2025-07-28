@@ -25,7 +25,7 @@ class SimuladorRendaVariavel:
         try:
             ticker = yf.Ticker(symbol)
             df = ticker.history(period=range_period, interval=interval)
-            
+            print(df.head())
             if df.empty:
                 return None, None
 
