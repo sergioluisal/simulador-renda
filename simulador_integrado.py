@@ -19,22 +19,23 @@ class SimuladorRendaVariavel:
         pass
         
     def buscar_dados_ativo(self, symbol, region='US', interval='1d', range_period='1y'):
-        """
-        Busca dados históricos de um ativo
-        """
+    """
+    Busca dados históricos de um ativo com tratamento de falhas no .info
+    """
+    try:
+        ticker = yf.Ticker(symbol)
+        df = ticker.history(period=range_period, interval=interval)
+
+        if df.empty:
+            return None, None
+
+        # Renomear colunas para consistência
+        df.columns = [col.lower() for col in df.columns]
+        df.index.name = 'date'
+
+        # Tentar obter metadados detalhados com .info
         try:
-            ticker = yf.Ticker(symbol)
-            df = ticker.history(period=range_period, interval=interval)
-            print(df.head())
-            if df.empty:
-                return None, None
-
-            # Renomear colunas para consistência
-            df.columns = [col.lower() for col in df.columns]
-            df.index.name = 'date'
-
-            # Obter metadados
-            info = ticker.fast_info
+            info = ticker.info
             meta = {
                 'symbol': symbol,
                 'longName': info.get('longName', symbol),
@@ -47,12 +48,44 @@ class SimuladorRendaVariavel:
                 'regularMarketDayHigh': info.get('regularMarketDayHigh', 'N/A'),
                 'regularMarketDayLow': info.get('regularMarketDayLow', 'N/A'),
             }
-            
-            return df, meta
-                
         except Exception as e:
-            print(f"Erro ao buscar dados para {symbol}: {str(e)}")
-            return None, None
+            print(f"[WARN] Falha ao buscar .info para {symbol}: {e}")
+            # Fallback para fast_info (mais leve e confiável)
+            try:
+                fast_info = ticker.fast_info
+                meta = {
+                    'symbol': symbol,
+                    'longName': symbol,
+                    'exchangeName': fast_info.get('exchange', 'N/A'),
+                    'currency': fast_info.get('currency', 'USD'),
+                    'regularMarketPrice': fast_info.get('last_price', df['close'].iloc[-1]),
+                    'fiftyTwoWeekHigh': fast_info.get('year_high', 'N/A'),
+                    'fiftyTwoWeekLow': fast_info.get('year_low', 'N/A'),
+                    'regularMarketVolume': fast_info.get('last_volume', 'N/A'),
+                    'regularMarketDayHigh': fast_info.get('day_high', 'N/A'),
+                    'regularMarketDayLow': fast_info.get('day_low', 'N/A'),
+                }
+            except Exception as ef:
+                print(f"[ERROR] Falha ao buscar fast_info para {symbol}: {ef}")
+                meta = {
+                    'symbol': symbol,
+                    'longName': symbol,
+                    'exchangeName': 'N/A',
+                    'currency': 'USD',
+                    'regularMarketPrice': df['close'].iloc[-1],
+                    'fiftyTwoWeekHigh': 'N/A',
+                    'fiftyTwoWeekLow': 'N/A',
+                    'regularMarketVolume': 'N/A',
+                    'regularMarketDayHigh': 'N/A',
+                    'regularMarketDayLow': 'N/A',
+                }
+
+        return df, meta
+
+    except Exception as e:
+        print(f"[ERROR] Erro ao buscar dados para {symbol}: {str(e)}")
+        return None, None
+
     
     def buscar_dividendos(self, symbol, start_date=None, end_date=None):
         """
