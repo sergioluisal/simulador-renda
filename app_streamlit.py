@@ -116,7 +116,7 @@ def main():
     # Período de análise
     periodo_analise = st.sidebar.selectbox(
         "Período de Análise:",
-        ["1mo", "3mo", "6mo", "1y", "2y", "5y"],
+        ["1mo", "3mo", "6mo", "1y", "2y", "5y", "10y"],
         index=3
     )
     
