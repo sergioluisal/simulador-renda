@@ -110,6 +110,7 @@ ACOES_BRASILEIRAS = {
     'ELET6.SA': 'Eletrobras PNB',
     'CPFE3.SA': 'CPFL Energia ON',
     'ENBR3.SA': 'EDP Brasil ON',
+    'AURE3.SA': 'AUREN ENERGIA ON',
     
     # Papel e Celulose
     'SUZB3.SA': 'Suzano ON',
