@@ -497,8 +497,8 @@ def exemplo_uso():
                 print(f"Valor Investido Inicial: R$ {rent['valor_inicial']:,.2f}")
                 if 'valor_total_aportado' in rent:
                     print(f"Valor Total Aportado: R$ {rent['valor_total_aportado']:,.2f}")
-                print(f"Preço de Compra: ${rent['preco_compra']:.2f}")
-                print(f"Preço Atual: ${rent['preco_atual']:.2f}")
+                print(f"Preço de Compra: R$/${rent['preco_compra']:.2f}")
+                print(f"Preço Atual: R$/${rent['preco_atual']:.2f}")
                 print(f"Quantidade de Ações: {rent['quantidade_acoes']:.2f}")
                 print(f"Valor Atual: R$ {rent['valor_atual']:,.2f}")
                 print(f"Rentabilidade: R$ {rent['rentabilidade_absoluta']:,.2f} ({rent['rentabilidade_percentual']:.2f}%)")
