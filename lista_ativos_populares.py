@@ -164,6 +164,13 @@ BDRS_POPULARES = {
     'DISB34.SA': 'Disney BDR',
 }
 
+# Fundos Brasileiras Populares
+FUNDOS_IMOBILIARIOS = {
+    # Índice Bovespa
+    'CPTS11: 'Capitania Securities II',
+
+}
+
 # ETFs Brasileiros
 ETFS_BRASILEIROS = {
     # Índice Bovespa
@@ -270,6 +277,7 @@ def obter_todos_ativos():
         'bdrs': BDRS_POPULARES,
         'etfs_brasileiros': ETFS_BRASILEIROS,
         'etfs_americanos': ETFS_AMERICANOS
+        'fiis_brasileiros': FUNDOS_IMOBILIARIOS
     }
 
 # Função para buscar ativo por símbolo
