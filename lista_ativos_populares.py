@@ -167,7 +167,7 @@ BDRS_POPULARES = {
 # Fundos Brasileiras Populares
 FUNDOS_IMOBILIARIOS = {
     # Índice Bovespa
-    'CPTS11: 'Capitania Securities II',
+    'CPTS11': 'Capitania Securities II',
 
 }
 
