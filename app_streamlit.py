@@ -77,7 +77,8 @@ def main():
         "Ações Brasileiras": "BR", 
         "BDRs": "US",
         "ETFs Brasileiros": "BR",
-        "ETFs Americanos": "US"
+        "ETFs Americanos": "US",
+        "FIIs Brasileiros": "BR"
     }
     
     # Obter lista completa de ativos
@@ -89,7 +90,8 @@ def main():
         "Ações Brasileiras": list(todos_ativos['acoes_brasileiras'].keys()),
         "BDRs": list(todos_ativos['bdrs'].keys()),
         "ETFs Brasileiros": list(todos_ativos['etfs_brasileiros'].keys()),
-        "ETFs Americanos": list(todos_ativos['etfs_americanos'].keys())
+        "ETFs Americanos": list(todos_ativos['etfs_americanos'].keys()),
+        "FIIs Brasileiros": list(todos_ativos['fiis_brasileiros'].keys())
     }
     
     # Input do símbolo
