@@ -276,7 +276,7 @@ def obter_todos_ativos():
         'acoes_brasileiras': ACOES_BRASILEIRAS,
         'bdrs': BDRS_POPULARES,
         'etfs_brasileiros': ETFS_BRASILEIROS,
-        'etfs_americanos': ETFS_AMERICANOS
+        'etfs_americanos': ETFS_AMERICANOS,
         'fiis_brasileiros': FUNDOS_IMOBILIARIOS
     }
 
