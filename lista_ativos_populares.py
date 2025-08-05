@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Lista de Ativos Populares para o Simulador de Renda Variável
-Contém ações, BDRs e ETFs americanos e brasileiros mais negociados
+Contém ações, FIIs, BDRs e ETFs americanos e brasileiros mais negociados
 """
 
 # Ações Americanas Populares
