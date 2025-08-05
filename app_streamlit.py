@@ -68,7 +68,7 @@ def main():
     # Seleção do tipo de ativo
     tipo_ativo = st.sidebar.selectbox(
         "Tipo de Ativo:",
-        ["Ações Americanas", "Ações Brasileiras", "BDRs", "ETFs Brasileiros", "ETFs Americanos"]
+        ["Ações Americanas", "Ações Brasileiras", "BDRs", "ETFs Brasileiros", "ETFs Americanos", "FIIs Brasileiros"]
     )
     
     # Mapeamento de regiões
