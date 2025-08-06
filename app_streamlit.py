@@ -60,7 +60,7 @@ def get_analisador():
 def main():
     # Título principal
     st.markdown('<h1 class="main-header">📈 Simulador de Renda Variável</h1>', unsafe_allow_html=True)
-    st.markdown("### Simule investimentos em Ações, BDRs e ETFs")
+    st.markdown("### Simule investimentos em Ações, FIIs, BDRs e ETFs")
     
     # Sidebar para configurações
     st.sidebar.header("⚙️ Configurações do Investimento")
@@ -417,6 +417,7 @@ def mostrar_informacoes_iniciais():
     - **Ações Brasileiras**: PETR4.SA, VALE3.SA, ITUB4.SA, etc.
     - **BDRs**: AAPL34.SA, GOGL34.SA, MSFT34.SA, etc.
     - **ETFs**: BOVA11.SA, SPY, QQQ, etc.
+    - **FIIs**: CPTS11.SA, etc.
     
     ## 📊 Métricas calculadas:
     
